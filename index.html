@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visaje - Electronic Music Magazine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300;600&family=Noto+Serif+Display:ital,wdth,wght@0,62.5,300;1,62.5,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+    <section class="hero">
+        <nav class="top-nav">
+            <div class="nav-logo">
+                <a href="/">*</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">Headed <br> to <br>nowhere</a></li>
+            </ul>
+            
+            <div class="nav-cta">
+                <a href="#" class="btn-login">Login</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <div class="hero-title">
+                <h1>walk</h1>
+            
+                <div class="hero-grid">
+                    <div class="grid-item center-item">
+                        <h1>into</h1>
+                    </div>
+                    <img class="chamber-hero" src="images/chamber-hero.png" alt="chamber-hero">
+                    <div class="grid-item lower-case on-top">
+                        <h1>the <br> /</h1>
+                    </div>
+                    <div class="grid-item on-top">
+                        <h1>chamber</h1>
+                    </div>
+                    <div class="grid-item content-50 on-top">
+                        <br><p>Affiches suisses des quatre années écoulées Un système de signes pour appareils électromédicaux Propagande électorale d'avant-garde Publicité pour une maison d'ameublement londonienne</p>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="hero-grid  hero-grid-5 on-top">
+                <div class="grid-item">
+                    <h4>Off the line</h4>
+                </div>
+                
+                <div class="grid-item">
+                    <p>Issue for March 2025</p>
+                </div>
+                <div class="grid-item">
+                    <p>Limited Edition</p>
+                </div>
+                <div class="grid-item">
+                    <h2>꙰</h2>
+                </div>
+                <div class="grid-item">
+                    <h2>Number 16</h2>
+                </div>
+            </div>
+        </div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    </section>
+    
+    
+    
+    <section class="idea-section">
+        <div class="idea-title">
+            <div id="lottie-container"></div>
+            <h2>I have an idea</h2>
+        </div>
+        <div class="marquee">
+            <h1>Going/Slow/Going/Slow/</h1>
+        </div>
+        <img class="rock" src="images/rock.png" alt="rock">
+        <div class="idea-grid  hero-grid-6 on-top">
+            <div class="grid-item">
+                <h4>Calm <br>down</h4>
+            </div>
+            <div class="grid-item">
+                <p>KEEP THE PACE<br>/<br>Fall constantly and create a brand new idea each time.</p>
+            </div>
+            <div class="grid-item">
+                
+            </div>
+            <div class="grid-item">
+                
+            </div>
+            <div class="grid-item">
+                <h2>꙰</h2>
+            </div>
+            <div class="grid-item">
+                <p>Limited Edition</p>
+                <h2>Number 16</h2>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const chamberHero = document.querySelector('.chamber-hero');
+            const rect = chamberHero.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Calculate distance from center (normalized from -1 to 1)
+            const rotateX = (e.clientY - centerY) / (window.innerHeight / 2);
+            const rotateY = (centerX - e.clientX) / (window.innerWidth / 2);
+            
+            // Calculate position shift (maximum 5 pixels)
+            const moveX = ((e.clientX - centerX) / window.innerWidth) * 3;
+            const moveY = ((e.clientY - centerY) / window.innerHeight) * 3;
+            
+            // Apply rotation and position shift
+            chamberHero.style.transform = `
+                perspective(1000px) 
+                rotateX(${rotateX * 3}deg) 
+                rotateY(${rotateY * 3}deg)
+                translate(${moveX}px, ${moveY}px)
+            `;
+        });
+
+        function generateBoxShadows(n) {
+            let value = [];
+            for (let i = 0; i < n; i++) {
+                const x = Math.floor(Math.random() * 2000);
+                const y = Math.floor(Math.random() * 2000);
+                value.push(`${x}px ${y}px #fff4d7`); // Using your theme color
+            }
+            return value.join(', ');
+        }
+
+        // Generate shadows for each star layer
+        const smallStars = generateBoxShadows(700);
+        const mediumStars = generateBoxShadows(200);
+        const bigStars = generateBoxShadows(100);
+
+        // Apply shadows to elements
+        document.getElementById('stars').style.boxShadow = smallStars;
+        document.getElementById('stars').querySelector(':after').style.boxShadow = smallStars;
+        
+        document.getElementById('stars2').style.boxShadow = mediumStars;
+        document.getElementById('stars2').querySelector(':after').style.boxShadow = mediumStars;
+        
+        document.getElementById('stars3').style.boxShadow = bigStars;
+        document.getElementById('stars3').querySelector(':after').style.boxShadow = bigStars;
+    </script>
+
+    <script>
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'files/slow-logo.lottie' // This will now work when served from GitHub Pages
+        });
+    </script>
+</body>
+</html>
