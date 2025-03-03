@@ -927,6 +927,7 @@ p.p-decor {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 0;
+    font-style: italic;
 }
 
 .idea-section .marquee {
@@ -980,8 +981,8 @@ p.p-decor {
 }
 
 #lottie-container {
-    width: 30px;  /* Adjust size as needed */
-    height: 30px; /* Adjust size as needed */
+    width: 40px;  /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
 }
 
 
