@@ -4,7 +4,7 @@ lottie.loadAnimation({
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'files/slow-logo-gray.json'
+    path: 'files/slow-logo-black.json'
 });
 
 // Mouse movement effect for chamber-hero
