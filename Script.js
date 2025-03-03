@@ -19,3 +19,36 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0 });
 
 observer.observe(document.querySelector('.article-hero'));
+
+// Lottie Animation
+lottie.loadAnimation({
+    container: document.getElementById('lottie-container'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'files/slow-logo.json'
+});
+
+// Mouse movement effect for chamber-hero
+document.addEventListener('mousemove', (e) => {
+    const chamberHero = document.querySelector('.chamber-hero');
+    const rect = chamberHero.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Calculate distance from center (normalized from -1 to 1)
+    const rotateX = (e.clientY - centerY) / (window.innerHeight / 2);
+    const rotateY = (centerX - e.clientX) / (window.innerWidth / 2);
+    
+    // Calculate position shift (maximum 5 pixels)
+    const moveX = ((e.clientX - centerX) / window.innerWidth) * 5;
+    const moveY = ((e.clientY - centerY) / window.innerHeight) * 5;
+    
+    // Apply rotation and position shift
+    chamberHero.style.transform = `
+        perspective(1000px) 
+        rotateX(${rotateX * 3}deg) 
+        rotateY(${rotateY * 3}deg)
+        translate(${moveX}px, ${moveY}px)
+    `;
+});

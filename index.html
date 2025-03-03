@@ -104,64 +104,6 @@
         </div>
     </section>
     
-    <script>
-        document.addEventListener('mousemove', (e) => {
-            const chamberHero = document.querySelector('.chamber-hero');
-            const rect = chamberHero.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            // Calculate distance from center (normalized from -1 to 1)
-            const rotateX = (e.clientY - centerY) / (window.innerHeight / 2);
-            const rotateY = (centerX - e.clientX) / (window.innerWidth / 2);
-            
-            // Calculate position shift (maximum 5 pixels)
-            const moveX = ((e.clientX - centerX) / window.innerWidth) * 3;
-            const moveY = ((e.clientY - centerY) / window.innerHeight) * 3;
-            
-            // Apply rotation and position shift
-            chamberHero.style.transform = `
-                perspective(1000px) 
-                rotateX(${rotateX * 3}deg) 
-                rotateY(${rotateY * 3}deg)
-                translate(${moveX}px, ${moveY}px)
-            `;
-        });
-
-        function generateBoxShadows(n) {
-            let value = [];
-            for (let i = 0; i < n; i++) {
-                const x = Math.floor(Math.random() * 2000);
-                const y = Math.floor(Math.random() * 2000);
-                value.push(`${x}px ${y}px #fff4d7`); // Using your theme color
-            }
-            return value.join(', ');
-        }
-
-        // Generate shadows for each star layer
-        const smallStars = generateBoxShadows(700);
-        const mediumStars = generateBoxShadows(200);
-        const bigStars = generateBoxShadows(100);
-
-        // Apply shadows to elements
-        document.getElementById('stars').style.boxShadow = smallStars;
-        document.getElementById('stars').querySelector(':after').style.boxShadow = smallStars;
-        
-        document.getElementById('stars2').style.boxShadow = mediumStars;
-        document.getElementById('stars2').querySelector(':after').style.boxShadow = mediumStars;
-        
-        document.getElementById('stars3').style.boxShadow = bigStars;
-        document.getElementById('stars3').querySelector(':after').style.boxShadow = bigStars;
-    </script>
-
-    <script>
-        lottie.loadAnimation({
-            container: document.getElementById('lottie-container'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'files/slow-logo.lottie' // This will now work when served from GitHub Pages
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
